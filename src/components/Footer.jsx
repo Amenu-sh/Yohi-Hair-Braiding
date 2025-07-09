@@ -1,0 +1,102 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Scissors, Instagram, Facebook, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+
+const Footer = () => {
+  return (
+    <footer className="bg-gradient-to-r from-gray-900 to-purple-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-2 rounded-lg">
+                <Scissors className="h-6 w-6 text-white" />
+              </div>
+              <span className="font-playfair text-xl font-bold">
+                Braided Beauty
+              </span>
+            </div>
+            <p className="text-gray-300 text-sm">
+              Transform your look with our expert hair braiding and styling services. 
+              Where beauty meets artistry.
+            </p>
+            <div className="flex space-x-4">
+              <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+                <Instagram className="h-4 w-4" />
+              </div>
+              <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+                <Facebook className="h-4 w-4" />
+              </div>
+              <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+                <Twitter className="h-4 w-4" />
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <span className="font-semibold text-lg mb-4 block">Quick Links</span>
+            <div className="space-y-2">
+              <Link to="/" className="block text-gray-300 hover:text-pink-400 transition-colors">
+                Home
+              </Link>
+              <Link to="/about" className="block text-gray-300 hover:text-pink-400 transition-colors">
+                About Us
+              </Link>
+              <Link to="/services" className="block text-gray-300 hover:text-pink-400 transition-colors">
+                Services
+              </Link>
+              <Link to="/gallery" className="block text-gray-300 hover:text-pink-400 transition-colors">
+                Gallery
+              </Link>
+              <Link to="/contact" className="block text-gray-300 hover:text-pink-400 transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <span className="font-semibold text-lg mb-4 block">Services</span>
+            <div className="space-y-2 text-gray-300">
+              <p>Box Braids</p>
+              <p>Cornrows</p>
+              <p>French Braids</p>
+              <p>Twist Styles</p>
+              <p>Protective Styles</p>
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <span className="font-semibold text-lg mb-4 block">Contact Info</span>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 text-gray-300">
+                <MapPin className="h-4 w-4 text-pink-400" />
+                <span className="text-sm">123 Beauty Street, Style City, SC 12345</span>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-300">
+                <Phone className="h-4 w-4 text-pink-400" />
+                <span className="text-sm">(555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-300">
+                <Mail className="h-4 w-4 text-pink-400" />
+                <span className="text-sm">info@braidedbeauty.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p className="text-gray-400 text-sm">
+            © 2024 Braided Beauty. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

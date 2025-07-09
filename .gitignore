@@ -1,0 +1,60 @@
+
+# Ignore node_modules directory
+.DS_Store
+# Ignore macOS system files
+.env
+# Ignore environment variable files
+*.log
+# Ignore log files
+*.cache
+# Ignore cache files
+dist/
+# Ignore build output directory
+build/
+# Ignore build output directory
+coverage/
+# Ignore test coverage reports
+.vscode/
+# Ignore Visual Studio Code settings
+.idea/
+# Ignore JetBrains IDE settings
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
