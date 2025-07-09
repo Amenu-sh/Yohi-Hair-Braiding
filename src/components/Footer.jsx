@@ -1,7 +1,14 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Scissors, Instagram, Facebook, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Scissors,
+  Instagram,
+  Facebook,
+  Twitter,
+  MapPin,
+  Phone,
+  Mail,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -11,16 +18,21 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-2 rounded-lg">
-                <Scissors className="h-6 w-6 text-white" />
+              <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-1 rounded-lg">
+                {/* <Scissors className="h-6 w-6 text-white" /> */}
+                <img
+                  src="images/logo.jpg" // Replace with your actual logo path
+                  alt="Yohi Beauty Salon Logo"
+                  className="h-10 w-10 rounded-full"
+                />
               </div>
               <span className="font-playfair text-xl font-bold">
-                Braided Beauty
+                Yohi Hair Braiding
               </span>
             </div>
             <p className="text-gray-300 text-sm">
-              Transform your look with our expert hair braiding and styling services. 
-              Where beauty meets artistry.
+              Transform your look with our expert hair braiding and styling
+              services. Where beauty meets artistry.
             </p>
             <div className="flex space-x-4">
               <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
@@ -37,21 +49,38 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <span className="font-semibold text-lg mb-4 block">Quick Links</span>
+            <span className="font-semibold text-lg mb-4 block">
+              Quick Links
+            </span>
             <div className="space-y-2">
-              <Link to="/" className="block text-gray-300 hover:text-pink-400 transition-colors">
+              <Link
+                to="/"
+                className="block text-gray-300 hover:text-pink-400 transition-colors"
+              >
                 Home
               </Link>
-              <Link to="/about" className="block text-gray-300 hover:text-pink-400 transition-colors">
+              <Link
+                to="/about"
+                className="block text-gray-300 hover:text-pink-400 transition-colors"
+              >
                 About Us
               </Link>
-              <Link to="/services" className="block text-gray-300 hover:text-pink-400 transition-colors">
+              <Link
+                to="/services"
+                className="block text-gray-300 hover:text-pink-400 transition-colors"
+              >
                 Services
               </Link>
-              <Link to="/gallery" className="block text-gray-300 hover:text-pink-400 transition-colors">
+              <Link
+                to="/gallery"
+                className="block text-gray-300 hover:text-pink-400 transition-colors"
+              >
                 Gallery
               </Link>
-              <Link to="/contact" className="block text-gray-300 hover:text-pink-400 transition-colors">
+              <Link
+                to="/contact"
+                className="block text-gray-300 hover:text-pink-400 transition-colors"
+              >
                 Contact
               </Link>
             </div>
@@ -71,19 +100,23 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <span className="font-semibold text-lg mb-4 block">Contact Info</span>
+            <span className="font-semibold text-lg mb-4 block">
+              Contact Info
+            </span>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="h-4 w-4 text-pink-400" />
-                <span className="text-sm">123 Beauty Street, Style City, SC 12345</span>
+                <span className="text-sm">
+                  4647 Harvest Corner Dr, Richmond, TX 77406
+                </span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="h-4 w-4 text-pink-400" />
-                <span className="text-sm">(555) 123-4567</span>
+                <span className="text-sm">(346) 464-1349</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="h-4 w-4 text-pink-400" />
-                <span className="text-sm">info@braidedbeauty.com</span>
+                <span className="text-sm">contact@yohihairbraiding.com</span>
               </div>
             </div>
           </div>
@@ -91,7 +124,8 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Braided Beauty. All rights reserved.
+            &copy; {new Date().getFullYear()} Yohi Hair Braiding. All rights
+            reserved.
           </p>
         </div>
       </div>

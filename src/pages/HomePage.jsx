@@ -112,7 +112,7 @@ const HomePage = () => {
               className="space-y-8"
             >
               <h1 className="font-playfair text-5xl md:text-7xl font-bold gradient-text">
-                Braided Beauty
+                Yohi Hair Braiding
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
                 Where artistry meets hair care. Transform your look with our expert braiding and styling services.
@@ -256,7 +256,7 @@ const HomePage = () => {
               className="text-center mb-16"
             >
               <h2 className="font-playfair text-4xl md:text-5xl font-bold gradient-text mb-4">
-                Why Choose Braided Beauty?
+                Why Choose Yohi Hair Braiding?
               </h2>
             </motion.div>
 
