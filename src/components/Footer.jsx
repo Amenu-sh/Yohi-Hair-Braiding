@@ -127,6 +127,17 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Yohi Hair Braiding. All rights
             reserved.
           </p>
+          <p className="text-gray-400 text-sm">
+            Developed by{" "}
+            <a
+              href="https://amenushi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Birbirr Inc
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>

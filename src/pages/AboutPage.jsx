@@ -148,28 +148,28 @@ const AboutPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Maya Johnson",
+                  name: "Yohanan Ab",
                   role: "Master Braider & Salon Owner",
                   experience: "12+ years",
                   specialty: "Box braids, Protective styles",
                   image:
-                    "Professional portrait of Maya Johnson, master braider and salon owner",
+                    "Professional portrait of Yohanan Ab, master braider and salon owner",
                 },
                 {
-                  name: "Zara Williams",
+                  name: "Yohanan Ab",
                   role: "Senior Stylist",
                   experience: "8+ years",
                   specialty: "Cornrows, Artistic patterns",
                   image:
-                    "Professional portrait of Zara Williams, senior hair stylist",
+                    "Professional portrait of Yohanan Ab, senior hair stylist",
                 },
                 {
-                  name: "Amara Davis",
+                  name: "Yohanan Ab",
                   role: "Creative Stylist",
                   experience: "6+ years",
                   specialty: "Twist styles, Color braiding",
                   image:
-                    "Professional portrait of Amara Davis, creative hair stylist",
+                    "Professional portrait of Yohanan Ab, creative hair stylist",
                 },
               ].map((member, index) => (
                 <motion.div
