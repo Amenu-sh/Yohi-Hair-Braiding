@@ -1,11 +1,10 @@
-
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Star, Play, ArrowRight, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Star, Play, ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
 const HomePage = () => {
   const [randomServices, setRandomServices] = useState([]);
@@ -13,52 +12,52 @@ const HomePage = () => {
   const services = [
     {
       id: 1,
-      name: 'Box Braids',
-      description: 'Classic protective style with endless possibilities',
-      image: 'Professional stylist creating beautiful box braids on a client',
-      video: 'Time-lapse video of box braids being created',
-      price: '$120-180'
+      name: "Box Braids",
+      description: "Classic protective style with endless possibilities",
+      image: "Professional stylist creating beautiful box braids on a client",
+      video: "Time-lapse video of box braids being created",
+      price: "$120-180",
     },
     {
       id: 2,
-      name: 'Cornrows',
-      description: 'Intricate patterns that showcase artistic skill',
-      image: 'Detailed cornrow braiding pattern on natural hair',
-      video: 'Step-by-step cornrow braiding technique',
-      price: '$80-120'
+      name: "Cornrows",
+      description: "Intricate patterns that showcase artistic skill",
+      image: "Detailed cornrow braiding pattern on natural hair",
+      video: "Step-by-step cornrow braiding technique",
+      price: "$80-120",
     },
     {
       id: 3,
-      name: 'French Braids',
-      description: 'Elegant and versatile for any occasion',
-      image: 'Beautiful French braid hairstyle on long hair',
-      video: 'French braiding tutorial demonstration',
-      price: '$60-90'
+      name: "French Braids",
+      description: "Elegant and versatile for any occasion",
+      image: "Beautiful French braid hairstyle on long hair",
+      video: "French braiding tutorial demonstration",
+      price: "$60-90",
     },
     {
       id: 4,
-      name: 'Twist Styles',
-      description: 'Natural texture enhancement with stunning results',
-      image: 'Gorgeous twist hairstyle on textured hair',
-      video: 'Two-strand twist styling process',
-      price: '$70-110'
+      name: "Twist Styles",
+      description: "Natural texture enhancement with stunning results",
+      image: "Gorgeous twist hairstyle on textured hair",
+      video: "Two-strand twist styling process",
+      price: "$70-110",
     },
     {
       id: 5,
-      name: 'Protective Styles',
-      description: 'Healthy hair maintenance with style',
-      image: 'Various protective hairstyles showcase',
-      video: 'Protective styling techniques compilation',
-      price: '$90-150'
+      name: "Protective Styles",
+      description: "Healthy hair maintenance with style",
+      image: "Various protective hairstyles showcase",
+      video: "Protective styling techniques compilation",
+      price: "$90-150",
     },
     {
       id: 6,
-      name: 'Goddess Braids',
-      description: 'Thick, chunky braids for a bold statement',
-      image: 'Stunning goddess braids with hair accessories',
-      video: 'Goddess braid creation process',
-      price: '$100-140'
-    }
+      name: "Goddess Braids",
+      description: "Thick, chunky braids for a bold statement",
+      image: "Stunning goddess braids with hair accessories",
+      video: "Goddess braid creation process",
+      price: "$100-140",
+    },
   ];
 
   useEffect(() => {
@@ -77,7 +76,7 @@ const HomePage = () => {
   const handleBookNow = () => {
     toast({
       title: "📅 Booking System",
-      description: "🚧 Online booking isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
+      description: "🚧 Amenu is working Online booking now! 🚀",
     });
   };
 
@@ -85,22 +84,31 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Braided Beauty - Expert Hair Braiding & Styling Salon</title>
-        <meta name="description" content="Transform your look with expert hair braiding and styling services. Specializing in box braids, cornrows, protective styles and more. Book your appointment today!" />
+        <meta
+          name="description"
+          content="Transform your look with expert hair braiding and styling services. Specializing in box braids, cornrows, protective styles and more. Book your appointment today!"
+        />
       </Helmet>
 
       <div className="pt-16">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-purple-50 to-cyan-50" />
-          
+
           {/* Floating Elements */}
           <div className="absolute top-20 left-10 floating-animation">
             <div className="w-20 h-20 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full opacity-20" />
           </div>
-          <div className="absolute bottom-20 right-10 floating-animation" style={{ animationDelay: '2s' }}>
+          <div
+            className="absolute bottom-20 right-10 floating-animation"
+            style={{ animationDelay: "2s" }}
+          >
             <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20" />
           </div>
-          <div className="absolute top-1/2 right-20 floating-animation" style={{ animationDelay: '4s' }}>
+          <div
+            className="absolute top-1/2 right-20 floating-animation"
+            style={{ animationDelay: "4s" }}
+          >
             <Sparkles className="w-8 h-8 text-pink-400 opacity-60" />
           </div>
 
@@ -115,12 +123,13 @@ const HomePage = () => {
                 Yohi Hair Braiding
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
-                Where artistry meets hair care. Transform your look with our expert braiding and styling services.
+                Where artistry meets hair care. Transform your look with our
+                expert braiding and styling services.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-3 text-lg pulse-glow"
                   onClick={handleBookNow}
                 >
@@ -128,7 +137,11 @@ const HomePage = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Link to="/gallery">
-                  <Button variant="outline" size="lg" className="px-8 py-3 text-lg border-pink-300 text-pink-600 hover:bg-pink-50">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="px-8 py-3 text-lg border-pink-300 text-pink-600 hover:bg-pink-50"
+                  >
                     View Gallery
                   </Button>
                 </Link>
@@ -138,7 +151,9 @@ const HomePage = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-6 w-6 fill-current" />
                 ))}
-                <span className="ml-2 text-gray-600 font-medium">5/5 from 200+ happy clients</span>
+                <span className="ml-2 text-gray-600 font-medium">
+                  5/5 from 200+ happy clients
+                </span>
               </div>
             </motion.div>
           </div>
@@ -150,10 +165,11 @@ const HomePage = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="absolute bottom-0 right-0 w-1/2 h-1/2 hidden lg:block"
           >
-            <img  
+            <img
               alt="Professional hair braiding stylist working on beautiful braids"
               className="w-full h-full object-cover rounded-tl-[3rem] shadow-2xl"
-             src="https://images.unsplash.com/photo-1659641716193-e88e0dc997c2" />
+              src="https://images.unsplash.com/photo-1659641716193-e88e0dc997c2"
+            />
           </motion.div>
         </section>
 
@@ -171,7 +187,8 @@ const HomePage = () => {
                 Featured Services
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Discover our most popular braiding and styling services, each crafted with precision and care.
+                Discover our most popular braiding and styling services, each
+                crafted with precision and care.
               </p>
             </motion.div>
 
@@ -188,11 +205,12 @@ const HomePage = () => {
                   <div className="glass-effect rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     {/* Service Image with Video Overlay */}
                     <div className="video-container mb-6 h-48">
-                      <img  
+                      <img
                         alt={service.image}
                         className="w-full h-full object-cover"
-                       src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
-                      <div 
+                        src="https://images.unsplash.com/photo-1595872018818-97555653a011"
+                      />
+                      <div
                         className="video-overlay cursor-pointer"
                         onClick={() => handleVideoClick(service.name)}
                       >
@@ -211,12 +229,10 @@ const HomePage = () => {
                           {service.price}
                         </span>
                       </div>
-                      
-                      <p className="text-gray-600">
-                        {service.description}
-                      </p>
 
-                      <Button 
+                      <p className="text-gray-600">{service.description}</p>
+
+                      <Button
                         className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
                         onClick={handleBookNow}
                       >
@@ -236,7 +252,11 @@ const HomePage = () => {
               className="text-center mt-12"
             >
               <Link to="/services">
-                <Button variant="outline" size="lg" className="border-pink-300 text-pink-600 hover:bg-pink-50">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-pink-300 text-pink-600 hover:bg-pink-50"
+                >
                   View All Services
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -263,20 +283,23 @@ const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  title: 'Expert Stylists',
-                  description: 'Our certified professionals have years of experience in hair braiding and styling.',
-                  icon: '👩‍🎨'
+                  title: "Expert Stylists",
+                  description:
+                    "Our certified professionals have years of experience in hair braiding and styling.",
+                  icon: "👩‍🎨",
                 },
                 {
-                  title: 'Premium Products',
-                  description: 'We use only the finest hair care products to ensure healthy, beautiful results.',
-                  icon: '✨'
+                  title: "Premium Products",
+                  description:
+                    "We use only the finest hair care products to ensure healthy, beautiful results.",
+                  icon: "✨",
                 },
                 {
-                  title: 'Personalized Service',
-                  description: 'Every client receives customized attention and styling tailored to their unique needs.',
-                  icon: '💖'
-                }
+                  title: "Personalized Service",
+                  description:
+                    "Every client receives customized attention and styling tailored to their unique needs.",
+                  icon: "💖",
+                },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -290,9 +313,7 @@ const HomePage = () => {
                   <h3 className="font-playfair text-2xl font-semibold text-gray-800 mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <p className="text-gray-600">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -313,18 +334,23 @@ const HomePage = () => {
                 Ready for Your Hair Transformation?
               </h2>
               <p className="text-xl opacity-90">
-                Book your appointment today and let our expert stylists create the perfect look for you.
+                Book your appointment today and let our expert stylists create
+                the perfect look for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
                   onClick={handleBookNow}
                 >
                   Book Now
                 </Button>
                 <Link to="/contact">
-                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg"
+                  >
                     Contact Us
                   </Button>
                 </Link>

@@ -1,25 +1,24 @@
-
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -27,53 +26,56 @@ const ContactPage = () => {
     e.preventDefault();
     toast({
       title: "📧 Message Sent!",
-      description: "🚧 Contact form submission isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
+      description: "🚧 Amenu is working Contact form submission! 🚀",
     });
   };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Visit Us',
-      details: ['123 Beauty Street', 'Style City, SC 12345'],
-      color: 'text-pink-500'
+      title: "Visit Us",
+      details: ["123 Beauty Street", "Style City, SC 12345"],
+      color: "text-pink-500",
     },
     {
       icon: Phone,
-      title: 'Call Us',
-      details: ['(555) 123-4567', 'Mon-Sat: 9AM-7PM'],
-      color: 'text-purple-500'
+      title: "Call Us",
+      details: ["(555) 123-4567", "Mon-Sat: 9AM-7PM"],
+      color: "text-purple-500",
     },
     {
       icon: Mail,
-      title: 'Email Us',
-      details: ['info@braidedbeauty.com', 'We reply within 24 hours'],
-      color: 'text-cyan-500'
+      title: "Email Us",
+      details: ["info@braidedbeauty.com", "We reply within 24 hours"],
+      color: "text-cyan-500",
     },
     {
       icon: Clock,
-      title: 'Hours',
-      details: ['Mon-Fri: 9AM-7PM', 'Sat: 8AM-6PM', 'Sun: Closed'],
-      color: 'text-pink-500'
-    }
+      title: "Hours",
+      details: ["Mon-Fri: 9AM-7PM", "Sat: 8AM-6PM", "Sun: Closed"],
+      color: "text-pink-500",
+    },
   ];
 
   const services = [
-    'Box Braids',
-    'Cornrows',
-    'French Braids',
-    'Twist Styles',
-    'Goddess Braids',
-    'Protective Styles',
-    'Knotless Braids',
-    'Fulani Braids'
+    "Box Braids",
+    "Cornrows",
+    "French Braids",
+    "Twist Styles",
+    "Goddess Braids",
+    "Protective Styles",
+    "Knotless Braids",
+    "Fulani Braids",
   ];
 
   return (
     <>
       <Helmet>
         <title>Contact Us - Braided Beauty Salon</title>
-        <meta name="description" content="Get in touch with Braided Beauty salon. Book appointments, ask questions, or visit our location. We're here to help with all your hair braiding needs." />
+        <meta
+          name="description"
+          content="Get in touch with Braided Beauty salon. Book appointments, ask questions, or visit our location. We're here to help with all your hair braiding needs."
+        />
       </Helmet>
 
       <div className="pt-16">
@@ -89,7 +91,7 @@ const ContactPage = () => {
                 Get In Touch
               </h1>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                Ready to transform your look? We'd love to hear from you. 
+                Ready to transform your look? We'd love to hear from you.
                 Contact us to book an appointment or ask any questions.
               </p>
             </motion.div>
@@ -109,7 +111,9 @@ const ContactPage = () => {
                   viewport={{ once: true }}
                   className="text-center p-6 glass-effect rounded-2xl hover:shadow-lg transition-shadow"
                 >
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-4`}>
+                  <div
+                    className={`w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-4`}
+                  >
                     <info.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="font-playfair text-xl font-semibold text-gray-800 mb-3">
@@ -143,7 +147,7 @@ const ContactPage = () => {
                   <h2 className="font-playfair text-3xl font-bold gradient-text mb-6">
                     Send Us a Message
                   </h2>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
@@ -225,7 +229,7 @@ const ContactPage = () => {
                       />
                     </div>
 
-                    <Button 
+                    <Button
                       type="submit"
                       className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-3 text-lg"
                     >
@@ -250,14 +254,16 @@ const ContactPage = () => {
                     Find Us
                   </h3>
                   <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                    <img  
+                    <img
                       alt="Map showing Braided Beauty salon location"
                       className="w-full h-full object-cover rounded-lg"
-                     src="https://images.unsplash.com/photo-1659641716193-e88e0dc997c2" />
+                      src="https://images.unsplash.com/photo-1659641716193-e88e0dc997c2"
+                    />
                   </div>
                   <div className="mt-4 p-4 bg-pink-50 rounded-lg">
                     <p className="text-gray-700">
-                      <strong>Parking:</strong> Free parking available in front of the salon and nearby street parking.
+                      <strong>Parking:</strong> Free parking available in front
+                      of the salon and nearby street parking.
                     </p>
                   </div>
                 </div>
@@ -270,25 +276,29 @@ const ContactPage = () => {
                   <div className="space-y-4">
                     {[
                       {
-                        question: 'How far in advance should I book?',
-                        answer: 'We recommend booking 1-2 weeks in advance, especially for weekend appointments.'
+                        question: "How far in advance should I book?",
+                        answer:
+                          "We recommend booking 1-2 weeks in advance, especially for weekend appointments.",
                       },
                       {
-                        question: 'Do you accept walk-ins?',
-                        answer: 'We accept walk-ins based on availability, but appointments are preferred.'
+                        question: "Do you accept walk-ins?",
+                        answer:
+                          "We accept walk-ins based on availability, but appointments are preferred.",
                       },
                       {
-                        question: 'What should I bring to my appointment?',
-                        answer: 'Just bring yourself! We provide all necessary products and tools.'
-                      }
+                        question: "What should I bring to my appointment?",
+                        answer:
+                          "Just bring yourself! We provide all necessary products and tools.",
+                      },
                     ].map((faq, index) => (
-                      <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
+                      <div
+                        key={index}
+                        className="border-b border-gray-200 pb-4 last:border-b-0"
+                      >
                         <h4 className="font-medium text-gray-800 mb-2">
                           {faq.question}
                         </h4>
-                        <p className="text-gray-600 text-sm">
-                          {faq.answer}
-                        </p>
+                        <p className="text-gray-600 text-sm">{faq.answer}</p>
                       </div>
                     ))}
                   </div>
@@ -313,8 +323,8 @@ const ContactPage = () => {
               <p className="text-lg opacity-90 mb-6">
                 For urgent appointment changes or questions, call us directly.
               </p>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
               >
                 Call (555) 123-4567
