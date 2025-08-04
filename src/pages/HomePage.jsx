@@ -13,49 +13,49 @@ const HomePage = () => {
     {
       id: 1,
       name: "Box Braids",
-      description: "Classic protective style with endless possibilities",
-      image: "Professional stylist creating beautiful box braids on a client",
-      video: "Time-lapse video of box braids being created",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/hair-styling1.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$120-180",
     },
     {
       id: 2,
       name: "Cornrows",
-      description: "Intricate patterns that showcase artistic skill",
-      image: "Detailed cornrow braiding pattern on natural hair",
-      video: "Step-by-step cornrow braiding technique",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/hair-styling2.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$80-120",
     },
     {
       id: 3,
-      name: "French Braids",
-      description: "Elegant and versatile for any occasion",
-      image: "Beautiful French braid hairstyle on long hair",
-      video: "French braiding tutorial demonstration",
+      name: "Fulani braids",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/fulani-1:2-1:2.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$60-90",
     },
     {
       id: 4,
       name: "Twist Styles",
-      description: "Natural texture enhancement with stunning results",
-      image: "Gorgeous twist hairstyle on textured hair",
-      video: "Two-strand twist styling process",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/Twists.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$70-110",
     },
     {
       id: 5,
-      name: "Protective Styles",
-      description: "Healthy hair maintenance with style",
-      image: "Various protective hairstyles showcase",
-      video: "Protective styling techniques compilation",
+      name: "Knotless box braids",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/hair-styling5.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$90-150",
     },
     {
       id: 6,
       name: "Goddess Braids",
-      description: "Thick, chunky braids for a bold statement",
-      image: "Stunning goddess braids with hair accessories",
-      video: "Goddess braid creation process",
+      description: "More detailed and brief description is coming soon!",
+      image: "/images/gallery/hair-styling6.jpg",
+      video: "/videos/hair-styling.mp4",
       price: "$100-140",
     },
   ];
@@ -206,9 +206,9 @@ const HomePage = () => {
                     {/* Service Image with Video Overlay */}
                     <div className="video-container mb-6 h-48">
                       <img
-                        alt={service.image}
-                        className="w-full h-full object-cover"
-                        src="https://images.unsplash.com/photo-1595872018818-97555653a011"
+                        alt={service.name}
+                        className="w-full h-full object-cover rounded-lg"
+                        src={service.image}
                       />
                       <div
                         className="video-overlay cursor-pointer"
