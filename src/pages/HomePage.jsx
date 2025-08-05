@@ -80,7 +80,7 @@ const HomePage = () => {
   const handleVideoClick = (serviceName) => {
     toast({
       title: "🎬 Video Preview",
-      description: `🚧 ${serviceName} Amenu is Working on Display video preview 🚀`,
+      description: `🚧 Amenu is Working on Display video preview 🚀`,
     });
   };
 
