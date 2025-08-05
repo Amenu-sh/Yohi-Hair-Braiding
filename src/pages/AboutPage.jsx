@@ -28,10 +28,10 @@ const AboutPage = () => {
                   Our Story
                 </h1>
                 <p className="text-xl text-gray-700 mb-6">
-                  Founded in 2018, Braided Beauty has been transforming lives
-                  through the art of hair braiding and styling. What started as
-                  a passion project has grown into a premier destination for
-                  protective styles and creative hair artistry.
+                  Founded in 2023, Yohi Hair Braiding has been transforming
+                  lives through the art of hair braiding and styling. What
+                  started as a passion project has grown into a premier
+                  destination for protective styles and creative hair artistry.
                 </p>
                 <p className="text-lg text-gray-600">
                   We believe that beautiful hair is an expression of your unique

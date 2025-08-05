@@ -1,117 +1,120 @@
-
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const GalleryPage = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const categories = [
-    { id: 'all', name: 'All Styles' },
-    { id: 'box-braids', name: 'Box Braids' },
-    { id: 'cornrows', name: 'Cornrows' },
-    { id: 'twists', name: 'Twists' },
-    { id: 'protective', name: 'Protective Styles' },
-    { id: 'goddess', name: 'Goddess Braids' }
+    { id: "all", name: "All Styles" },
+    { id: "box-braids", name: "Box Braids" },
+    { id: "cornrows", name: "Cornrows" },
+    { id: "twists", name: "Twists" },
+    { id: "protective", name: "Protective Styles" },
+    { id: "goddess", name: "Goddess Braids" },
   ];
 
   const galleryItems = [
     {
       id: 1,
-      category: 'box-braids',
-      title: 'Classic Box Braids',
-      description: 'Medium-length box braids with natural hair',
-      image: 'Beautiful classic box braids hairstyle on natural hair'
+      category: "box-braids",
+      title: "Classic Box Braids",
+      description: "Medium-length box braids with natural hair",
+      image: "/images/gallery/hair-styling1.jpg",
     },
     {
       id: 2,
-      category: 'cornrows',
-      title: 'Geometric Cornrows',
-      description: 'Intricate geometric pattern cornrows',
-      image: 'Geometric cornrow pattern with artistic design'
+      category: "cornrows",
+      title: "Geometric Cornrows",
+      description: "Intricate geometric pattern cornrows",
+      image: "/images/gallery/cornrows.jpg",
     },
     {
       id: 3,
-      category: 'twists',
-      title: 'Senegalese Twists',
-      description: 'Long Senegalese twists with ombre effect',
-      image: 'Senegalese twists with beautiful ombre coloring'
+      category: "twists",
+      title: "Senegalese Twists",
+      description: "Long Senegalese twists with ombre effect",
+      image: "/images/gallery/Twists.jpg",
     },
     {
       id: 4,
-      category: 'goddess',
-      title: 'Goddess Braids Updo',
-      description: 'Elegant goddess braids styled in an updo',
-      image: 'Elegant goddess braids arranged in updo style'
+      category: "goddess",
+      title: "Goddess Braids Updo",
+      description: "Elegant goddess braids styled in an updo",
+      image: "/images/gallery/Godes-Boho-knotles.jpg",
     },
     {
       id: 5,
-      category: 'protective',
-      title: 'Protective Crown',
-      description: 'Crown braid protective style',
-      image: 'Crown braid protective hairstyle for natural hair'
+      category: "protective",
+      title: "Protective Crown",
+      description: "Crown braid protective style",
+      image: "/images/gallery/hair-styling2.jpg",
     },
     {
       id: 6,
-      category: 'box-braids',
-      title: 'Jumbo Box Braids',
-      description: 'Large box braids for a bold look',
-      image: 'Jumbo box braids creating a bold statement look'
+      category: "box-braids",
+      title: "Jumbo Box Braids",
+      description: "Large box braids for a bold look",
+      image: "/images/gallery/hair-styling3.jpg",
     },
     {
       id: 7,
-      category: 'cornrows',
-      title: 'Side-Swept Cornrows',
-      description: 'Cornrows styled to one side',
-      image: 'Side-swept cornrows with elegant styling'
+      category: "cornrows",
+      title: "Side-Swept Cornrows",
+      description: "Cornrows styled to one side",
+      image: "/images/gallery/hair-styling4.jpg",
     },
     {
       id: 8,
-      category: 'twists',
-      title: 'Two-Strand Twists',
-      description: 'Natural two-strand twist out',
-      image: 'Natural two-strand twists with defined curl pattern'
+      category: "twists",
+      title: "Two-Strand Twists",
+      description: "Natural two-strand twist out",
+      image: "/images/gallery/hair-styling5.jpg",
     },
     {
       id: 9,
-      category: 'goddess',
-      title: 'Bohemian Goddess Braids',
-      description: 'Goddess braids with bohemian flair',
-      image: 'Bohemian-style goddess braids with decorative elements'
+      category: "goddess",
+      title: "Bohemian Goddess Braids",
+      description: "Goddess braids with bohemian flair",
+      image: "/images/gallery/hair-styling6.jpg",
     },
     {
       id: 10,
-      category: 'protective',
-      title: 'Halo Braid',
-      description: 'Protective halo braid style',
-      image: 'Halo braid protective style around the head'
+      category: "protective",
+      title: "Halo Braid",
+      description: "Protective halo braid style",
+      image: "/images/gallery/hair-styling1.jpg",
     },
     {
       id: 11,
-      category: 'box-braids',
-      title: 'Colored Box Braids',
-      description: 'Box braids with vibrant color highlights',
-      image: 'Box braids with colorful highlights and extensions'
+      category: "box-braids",
+      title: "Colored Box Braids",
+      description: "Box braids with vibrant color highlights",
+      image: "/images/gallery/hair-styling2.jpg",
     },
     {
       id: 12,
-      category: 'cornrows',
-      title: 'Feed-in Cornrows',
-      description: 'Natural-looking feed-in cornrows',
-      image: 'Feed-in cornrows with natural hairline appearance'
-    }
+      category: "cornrows",
+      title: "Feed-in Cornrows",
+      description: "Natural-looking feed-in cornrows",
+      image: "/images/gallery/hair-styling3.jpg",
+    },
   ];
 
-  const filteredItems = activeFilter === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeFilter);
+  const filteredItems =
+    activeFilter === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === activeFilter);
 
   return (
     <>
       <Helmet>
         <title>Hair Gallery - Braided Beauty Salon</title>
-        <meta name="description" content="Browse our stunning gallery of hair braiding and styling work. See examples of box braids, cornrows, protective styles, and more by our expert stylists." />
+        <meta
+          name="description"
+          content="Browse our stunning gallery of hair braiding and styling work. See examples of box braids, cornrows, protective styles, and more by our expert stylists."
+        />
       </Helmet>
 
       <div className="pt-16">
@@ -127,8 +130,8 @@ const GalleryPage = () => {
                 Our Gallery
               </h1>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                Explore our portfolio of stunning hair transformations and get inspired 
-                for your next braiding adventure.
+                Explore our portfolio of stunning hair transformations and get
+                inspired for your next braiding adventure.
               </p>
             </motion.div>
           </div>
@@ -145,8 +148,8 @@ const GalleryPage = () => {
                   onClick={() => setActiveFilter(category.id)}
                   className={`${
                     activeFilter === category.id
-                      ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white'
-                      : 'border-pink-300 text-pink-600 hover:bg-pink-50'
+                      ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white"
+                      : "border-pink-300 text-pink-600 hover:bg-pink-50"
                   }`}
                 >
                   {category.name}
@@ -159,7 +162,7 @@ const GalleryPage = () => {
         {/* Gallery Grid */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               layout
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             >
@@ -176,11 +179,12 @@ const GalleryPage = () => {
                   <div className="glass-effect rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     {/* Image */}
                     <div className="relative h-64 overflow-hidden">
-                      <img  
-                        alt={item.image}
+                      <img
+                        alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                       src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
-                      
+                        src={item.image}
+                      />
+
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -223,7 +227,7 @@ const GalleryPage = () => {
         </section>
 
         {/* Before & After Section */}
-        <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+        {/* <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -243,17 +247,19 @@ const GalleryPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
-                  before: 'Natural hair before braiding transformation',
-                  after: 'Beautiful box braids transformation result',
-                  title: 'Box Braids Transformation',
-                  description: 'From natural hair to stunning protective box braids'
+                  before: "Natural hair before braiding transformation",
+                  after: "Beautiful box braids transformation result",
+                  title: "Box Braids Transformation",
+                  description:
+                    "From natural hair to stunning protective box braids",
                 },
                 {
-                  before: 'Hair before cornrow styling session',
-                  after: 'Intricate cornrow pattern completion',
-                  title: 'Cornrow Artistry',
-                  description: 'Artistic cornrow patterns that showcase skill and creativity'
-                }
+                  before: "Hair before cornrow styling session",
+                  after: "Intricate cornrow pattern completion",
+                  title: "Cornrow Artistry",
+                  description:
+                    "Artistic cornrow patterns that showcase skill and creativity",
+                },
               ].map((transformation, index) => (
                 <motion.div
                   key={index}
@@ -265,31 +271,35 @@ const GalleryPage = () => {
                 >
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="text-center text-sm font-medium text-gray-600 mb-2">Before</p>
-                      <img  
+                      <p className="text-center text-sm font-medium text-gray-600 mb-2">
+                        Before
+                      </p>
+                      <img
                         alt={transformation.before}
                         className="w-full h-32 object-cover rounded-lg"
-                       src="https://images.unsplash.com/photo-1583241080717-eff51c113093" />
+                        src="https://images.unsplash.com/photo-1583241080717-eff51c113093"
+                      />
                     </div>
                     <div>
-                      <p className="text-center text-sm font-medium text-gray-600 mb-2">After</p>
-                      <img  
+                      <p className="text-center text-sm font-medium text-gray-600 mb-2">
+                        After
+                      </p>
+                      <img
                         alt={transformation.after}
                         className="w-full h-32 object-cover rounded-lg"
-                       src="https://images.unsplash.com/photo-1583241080717-eff51c113093" />
+                        src="https://images.unsplash.com/photo-1583241080717-eff51c113093"
+                      />
                     </div>
                   </div>
                   <h3 className="font-playfair text-xl font-semibold text-gray-800 mb-2">
                     {transformation.title}
                   </h3>
-                  <p className="text-gray-600">
-                    {transformation.description}
-                  </p>
+                  <p className="text-gray-600">{transformation.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-600 text-white">
@@ -305,10 +315,11 @@ const GalleryPage = () => {
                 Ready for Your Transformation?
               </h2>
               <p className="text-xl opacity-90">
-                Let us create your next stunning look. Book your appointment today!
+                Let us create your next stunning look. Book your appointment
+                today!
               </p>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
               >
                 Book Your Appointment
