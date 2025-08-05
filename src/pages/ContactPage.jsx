@@ -326,6 +326,7 @@ const ContactPage = () => {
               <Button
                 size="lg"
                 className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
+                onClick={() => window.open("tel:+13464641349", "_self")}
               >
                 Call (346) 464-1349
               </Button>

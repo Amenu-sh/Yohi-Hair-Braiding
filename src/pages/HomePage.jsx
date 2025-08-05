@@ -80,7 +80,7 @@ const HomePage = () => {
   const handleVideoClick = (serviceName) => {
     toast({
       title: "🎬 Video Preview",
-      description: `🚧 ${serviceName} video preview isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀`,
+      description: `🚧 ${serviceName} Amenu is Working on Display video preview 🚀`,
     });
   };
 
