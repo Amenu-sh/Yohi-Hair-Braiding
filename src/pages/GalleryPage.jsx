@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const GalleryPage = () => {
@@ -318,12 +319,14 @@ const GalleryPage = () => {
                 Let us create your next stunning look. Book your appointment
                 today!
               </p>
-              <Button
-                size="lg"
-                className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
-              >
-                Book Your Appointment
-              </Button>
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
+                >
+                  Contact Us
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </section>

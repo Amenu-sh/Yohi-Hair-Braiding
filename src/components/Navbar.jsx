@@ -14,6 +14,7 @@ const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" },
+    { name: "My Booking", path: "/booking-lookup" },
   ];
 
   return (
@@ -57,9 +58,10 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
-              Book Now
-            </Button>
+
+            {/* <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
+                Book Now
+              </Button> */}
           </div>
 
           {/* Mobile menu button */}
@@ -101,9 +103,9 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="mt-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
+              {/* <Button className="mt-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
                 Book Now
-              </Button>
+              </Button> */}
             </div>
           </motion.div>
         )}

@@ -34,25 +34,25 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["123 Beauty Street", "Style City, SC 12345"],
+      details: ["4647 Harvest Corner Dr, Richmond, TX 77406"],
       color: "text-pink-500",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["(555) 123-4567", "Mon-Sat: 9AM-7PM"],
+      details: ["(346) 464-1349", "Mon-Sat: 9AM-7PM"],
       color: "text-purple-500",
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@braidedbeauty.com", "We reply within 24 hours"],
+      details: ["contact@yohihairbraiding.com", "We reply within 24 hours"],
       color: "text-cyan-500",
     },
     {
       icon: Clock,
       title: "Hours",
-      details: ["Mon-Fri: 9AM-7PM", "Sat: 8AM-6PM", "Sun: Closed"],
+      details: ["Mon-Fri: 9AM-9PM", "Sat: 8AM-6PM", "Sun: Closed"],
       color: "text-pink-500",
     },
   ];
@@ -71,10 +71,10 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - Braided Beauty Salon</title>
+        <title>Contact Us - Yohi Hair Braiding</title>
         <meta
           name="description"
-          content="Get in touch with Braided Beauty salon. Book appointments, ask questions, or visit our location. We're here to help with all your hair braiding needs."
+          content="Get in touch with Yohi Hair Braiding salon. Book appointments, ask questions, or visit our location. We're here to help with all your hair braiding needs."
         />
       </Helmet>
 
@@ -327,7 +327,7 @@ const ContactPage = () => {
                 size="lg"
                 className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
               >
-                Call (555) 123-4567
+                Call (346) 464-1349
               </Button>
             </motion.div>
           </div>

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import BookingForm from "@/components/BookingForm";
 
 const ServicesPage = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
   const services = [
     {
       id: 1,
@@ -14,7 +18,7 @@ const ServicesPage = () => {
         "Classic protective style perfect for all occasions. Available in various lengths and thicknesses.",
       duration: "4-6 hours",
       price: "$120-180",
-      image: "Beautiful box braids hairstyle on natural hair",
+      image: "/images/gallery/hair-styling1.jpg",
       features: [
         "Protective styling",
         "Long-lasting",
@@ -29,7 +33,7 @@ const ServicesPage = () => {
         "Intricate braided patterns close to the scalp. Custom designs available.",
       duration: "2-4 hours",
       price: "$80-120",
-      image: "Detailed cornrow braiding pattern with geometric designs",
+      image: "/images/gallery/cornrows.jpg",
       features: [
         "Scalp-friendly",
         "Custom patterns",
@@ -39,12 +43,12 @@ const ServicesPage = () => {
     },
     {
       id: 3,
-      name: "French Braids",
+      name: "Fulani braids",
       description:
         "Elegant braiding technique suitable for formal and casual occasions.",
       duration: "1-2 hours",
       price: "$60-90",
-      image: "Elegant French braid hairstyle for special occasions",
+      image: "/images/gallery/fulani-1:2-1:2.jpg",
       features: [
         "Classic elegance",
         "Quick styling",
@@ -59,7 +63,7 @@ const ServicesPage = () => {
         "Natural texture enhancement with two-strand twists and Senegalese twists.",
       duration: "3-5 hours",
       price: "$70-110",
-      image: "Beautiful twist hairstyle showcasing natural texture",
+      image: "/images/gallery/Twists.jpg",
       features: [
         "Natural enhancement",
         "Gentle on hair",
@@ -73,7 +77,7 @@ const ServicesPage = () => {
       description: "Thick, chunky braids that make a bold fashion statement.",
       duration: "3-4 hours",
       price: "$100-140",
-      image: "Stunning goddess braids with decorative accessories",
+      image: "/images/gallery/Godes-Boho-knotles.jpg",
       features: [
         "Bold statement",
         "Thick braids",
@@ -83,12 +87,12 @@ const ServicesPage = () => {
     },
     {
       id: 6,
-      name: "Protective Styles",
+      name: "Senegalese twists",
       description:
         "Various protective styling options to maintain hair health while looking fabulous.",
       duration: "2-5 hours",
       price: "$90-150",
-      image: "Collection of protective hairstyles for hair health",
+      image: "/images/gallery/hair-styling3.jpg",
       features: [
         "Hair protection",
         "Health-focused",
@@ -103,7 +107,7 @@ const ServicesPage = () => {
         "Modern braiding technique that reduces tension and provides a more natural look.",
       duration: "5-7 hours",
       price: "$150-220",
-      image: "Knotless braids showing natural hairline and reduced tension",
+      image: "/images/gallery/knotles-braids.jpg",
       features: [
         "Reduced tension",
         "Natural appearance",
@@ -118,7 +122,7 @@ const ServicesPage = () => {
         "Traditional African braiding style with decorative beads and accessories.",
       duration: "4-6 hours",
       price: "$130-170",
-      image: "Traditional Fulani braids with cultural beads and accessories",
+      image: "/images/gallery/fulani-1:2-1:2.jpg",
       features: [
         "Cultural heritage",
         "Decorative elements",
@@ -129,10 +133,22 @@ const ServicesPage = () => {
   ];
 
   const handleBookService = (serviceName) => {
-    toast({
-      title: "📅 Book Service",
-      description: `🚧 Amenu is working on ${serviceName} booking forms now! 🚀`,
-    });
+    // Map service names to form values
+    const serviceMap = {
+      "Box Braids": "box-braids",
+      Cornrows: "cornrows",
+      "Fulani braids": "fulani-braids",
+      "Twist Styles": "twist-styles",
+      "Goddess Braids": "goddess-braids",
+      "Senegalese twists": "senegalese-twists",
+      "Knotless Braids": "knotless-braids",
+      "Fulani Braids": "fulani-braids-premium",
+    };
+
+    setSelectedService(
+      serviceMap[serviceName] || serviceName.toLowerCase().replace(/\s+/g, "-")
+    );
+    setIsBookingOpen(true);
   };
 
   return (
@@ -185,7 +201,7 @@ const ServicesPage = () => {
                       <img
                         alt={service.image}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        src="https://images.unsplash.com/photo-1595872018818-97555653a011"
+                        src={service.image}
                       />
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
                         <span className="text-pink-600 font-bold text-sm">
@@ -338,13 +354,20 @@ const ServicesPage = () => {
               <Button
                 size="lg"
                 className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
-                onClick={() => handleBookService("any service")}
+                onClick={() => setIsBookingOpen(true)}
               >
                 Book Your Appointment
               </Button>
             </motion.div>
           </div>
         </section>
+
+        {/* Booking Form Modal */}
+        <BookingForm
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+          selectedService={selectedService}
+        />
       </div>
     </>
   );

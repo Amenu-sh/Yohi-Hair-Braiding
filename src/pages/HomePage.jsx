@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import { Star, Play, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import BookingForm from "@/components/BookingForm";
 
 const HomePage = () => {
   const [randomServices, setRandomServices] = useState([]);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   const services = [
     {
@@ -81,17 +84,32 @@ const HomePage = () => {
     });
   };
 
-  const handleBookNow = () => {
-    toast({
-      title: "📅 Booking System",
-      description: "🚧 Amenu is working Online booking now! 🚀",
-    });
+  const handleBookNow = (serviceName = null) => {
+    // Map service names to form values
+    const serviceMap = {
+      "Box Braids": "box-braids",
+      Cornrows: "cornrows",
+      "Fulani braids": "fulani-braids",
+      "Twist Styles": "twist-styles",
+      "Goddess Braids": "goddess-braids",
+      "Senegalese twists": "senegalese-twists",
+      "Knotless box braids": "knotless-braids",
+      "French Braids": "fulani-braids",
+    };
+
+    if (serviceName) {
+      setSelectedService(
+        serviceMap[serviceName] ||
+          serviceName.toLowerCase().replace(/\s+/g, "-")
+      );
+    }
+    setIsBookingOpen(true);
   };
 
   return (
     <>
       <Helmet>
-        <title>Braided Beauty - Expert Hair Braiding & Styling Salon</title>
+        <title>Yohi Hair Braiding - Expert Hair Braiding & Styling Salon</title>
         <meta
           name="description"
           content="Transform your look with expert hair braiding and styling services. Specializing in box braids, cornrows, protective styles and more. Book your appointment today!"
@@ -139,7 +157,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-3 text-lg pulse-glow"
-                  onClick={handleBookNow}
+                  onClick={() => setIsBookingOpen(true)}
                 >
                   Book Appointment
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -242,7 +260,7 @@ const HomePage = () => {
 
                       <Button
                         className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
-                        onClick={handleBookNow}
+                        onClick={() => handleBookNow(service.name)}
                       >
                         Book This Service
                       </Button>
@@ -349,7 +367,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   className="bg-white text-pink-600 hover:bg-gray-100 px-8 py-3 text-lg"
-                  onClick={handleBookNow}
+                  onClick={() => setIsBookingOpen(true)}
                 >
                   Book Now
                 </Button>
@@ -366,6 +384,13 @@ const HomePage = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Booking Form Modal */}
+        <BookingForm
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+          selectedService={selectedService}
+        />
       </div>
     </>
   );
