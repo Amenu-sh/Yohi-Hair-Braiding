@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "node tools/generate-llms.js || true && vite build",
     "preview": "vite preview"
-  
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-checkbox": "^1.0.4",

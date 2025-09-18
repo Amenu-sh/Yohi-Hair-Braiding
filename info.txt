@@ -19,8 +19,9 @@ Next Steps:
     Description of services 
     Specific/Matching images/videos of services
     Update the services prices
-    Connect to backend data base for customer info. save
-    Update Owner and stylist info
+    Connect to backend data base for customer info. 
+    Finish booking and start receiving it.
+    save Update Owner and additional workers and stylist info
     connect to social medias
 
 

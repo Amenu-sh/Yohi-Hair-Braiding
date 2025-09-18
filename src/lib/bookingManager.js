@@ -1,6 +1,8 @@
 // Simple booking data management utility
 // In a real application, this would be connected to a backend API
 
+import emailjs from "@emailjs/browser";
+
 class BookingManager {
   constructor() {
     this.bookings = this.loadBookings();
@@ -155,8 +157,87 @@ class BookingManager {
     console.log(`Service: ${booking.service}`);
     console.log(`Date: ${booking.date} at ${booking.time}`);
 
+    // Also send notification to business email
+    this.sendBusinessNotification(booking);
+
     // In a real app, this would integrate with an email service like SendGrid, Mailgun, etc.
     return true;
+  }
+
+  // Send business notification email using EmailJS
+  async sendBusinessNotification(booking) {
+    const businessEmail =
+      import.meta.env.VITE_BUSINESS_EMAIL || "contact@yohihairbraiding.com";
+
+    try {
+      // Prepare email data for your EmailJS template
+      const templateParams = {
+        to_name: "Yohi Hair Braiding Team",
+        from_name: booking.customerName,
+        from_email: booking.email,
+        time: `${booking.date} at ${booking.time}`,
+        message: this.formatBookingMessage(booking),
+        to_email: businessEmail,
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("✅ Business notification email sent successfully:", result);
+      return result;
+    } catch (error) {
+      console.error("❌ Failed to send business notification email:", error);
+
+      // Fallback: log the booking details
+      console.log(
+        `📬 Fallback: Business notification for booking ${booking.id}`
+      );
+      console.log(`Customer: ${booking.customerName} (${booking.email})`);
+      console.log(
+        `Service: ${booking.service} on ${booking.date} at ${booking.time}`
+      );
+
+      return false;
+    }
+  }
+
+  // Format booking details for email message
+  formatBookingMessage(booking) {
+    return `
+🆔 Booking ID: ${booking.id}
+✂️ Service: ${booking.service.replace(/-/g, " ")}
+📅 Date: ${booking.date}
+⏰ Time: ${booking.time}
+📱 Phone: ${booking.phone}
+
+💇‍♀️ Hair Details:
+• Length: ${booking.hairLength}
+• Texture: ${booking.hairTexture}
+
+${
+  booking.specialRequests
+    ? `📝 Special Requests: ${booking.specialRequests}`
+    : ""
+}
+
+${
+  booking.address
+    ? `🏠 Address: ${booking.address}${
+        booking.city ? `, ${booking.city}` : ""
+      }${booking.zipCode ? ` ${booking.zipCode}` : ""}`
+    : ""
+}
+
+📧 Status: ${booking.status}
+🕐 Booked: ${new Date(booking.createdAt).toLocaleString()}
+
+Please contact the customer to confirm this appointment.
+    `.trim();
   }
 
   // Send reminder email (simulation)

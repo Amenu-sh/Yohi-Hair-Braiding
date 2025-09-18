@@ -174,11 +174,11 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
       });
 
       // Send confirmation email (simulation)
-      bookingManager.sendConfirmationEmail(booking);
+      await bookingManager.sendConfirmationEmail(booking);
 
       toast({
         title: "🎉 Booking Confirmed!",
-        description: `Your appointment (ID: ${booking.id}) for ${formData.service} has been scheduled for ${formData.date} at ${formData.time}. We'll send you a confirmation email shortly.`,
+        description: `Your appointment (ID: ${booking.id}) for ${formData.service} has been scheduled for ${formData.date} at ${formData.time}. We'll send you a confirmation email and contact you within 24 hours to confirm your appointment.`,
       });
 
       // Reset form and close modal
@@ -540,6 +540,19 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
 
           {/* Submit Button */}
           <div className="pt-6 border-t">
+            <div className="mb-4 p-3 bg-pink-50 rounded-lg">
+              <p className="text-sm text-gray-700">
+                <strong>📧 What happens next:</strong> Your booking request will
+                be sent to our team at
+                <span className="font-medium text-pink-600">
+                  {" "}
+                  contact@yohihairbraiding.com
+                </span>
+                . We'll contact you within 24 hours to confirm your appointment
+                and answer any questions.
+              </p>
+            </div>
+
             <Button
               type="submit"
               disabled={isSubmitting}
