@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,8 @@ const ContactPage = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -22,12 +25,71 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: "📧 Message Sent!",
-      description: "🚧 Amenu is working Contact form submission! 🚀",
-    });
+
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "❌ Missing Information",
+        description:
+          "Please fill in all required fields (name, email, and message).",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare email data for EmailJS template
+      const templateParams = {
+        to_name: "Yohi Hair Braiding Team",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || "Not provided",
+        service: formData.service || "General inquiry",
+        message: formData.message,
+        to_email:
+          import.meta.env.VITE_BUSINESS_EMAIL || "contact@yohihairbraiding.com",
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("✅ Contact form email sent successfully:", result);
+
+      // Show success message
+      toast({
+        title: "📧 Message Sent Successfully!",
+        description:
+          "Thank you for contacting us! We'll get back to you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("❌ Failed to send contact form email:", error);
+
+      toast({
+        title: "❌ Failed to Send Message",
+        description:
+          "There was an error sending your message. Please try calling us directly at (346) 464-1349.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -231,10 +293,20 @@ const ContactPage = () => {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-3 text-lg"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
-                      <Send className="ml-2 h-5 w-5" />
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="ml-2 h-5 w-5" />
+                        </>
+                      )}
                     </Button>
                   </form>
                 </div>
