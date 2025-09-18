@@ -16,6 +16,114 @@ const ContactPage = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
+
+  // Security validation functions
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) return true; // Phone is optional
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, "");
+    return cleanPhone.length >= 10 && phoneRegex.test(cleanPhone);
+  };
+
+  const detectSpam = (text) => {
+    const spamKeywords = [
+      "casino",
+      "lottery",
+      "winner",
+      "congratulations",
+      "click here",
+      "free money",
+      "make money",
+      "work from home",
+      "viagra",
+      "crypto",
+      "bitcoin",
+      "investment",
+      "loan",
+      "credit",
+      "debt",
+      "insurance",
+      "seo",
+      "marketing",
+      "promotion",
+      "offer expires",
+      "limited time",
+      "act now",
+      "urgent",
+      "immediate",
+      "guarantee",
+      "risk free",
+    ];
+
+    const lowerText = text.toLowerCase();
+    const spamCount = spamKeywords.filter((keyword) =>
+      lowerText.includes(keyword)
+    ).length;
+
+    // Check for excessive links
+    const linkCount = (text.match(/https?:\/\//g) || []).length;
+
+    // Check for excessive capitalization
+    const capsRatio = (text.match(/[A-Z]/g) || []).length / text.length;
+
+    return spamCount >= 2 || linkCount >= 2 || capsRatio > 0.5;
+  };
+
+  const validateInput = (data) => {
+    const errors = [];
+
+    // Name validation
+    if (!data.name || data.name.trim().length < 2) {
+      errors.push("Name must be at least 2 characters long");
+    }
+    if (data.name.length > 100) {
+      errors.push("Name is too long");
+    }
+
+    // Email validation
+    if (!data.email || !validateEmail(data.email)) {
+      errors.push("Please enter a valid email address");
+    }
+
+    // Phone validation
+    if (data.phone && !validatePhone(data.phone)) {
+      errors.push("Please enter a valid phone number");
+    }
+
+    // Message validation
+    if (!data.message || data.message.trim().length < 10) {
+      errors.push("Message must be at least 10 characters long");
+    }
+    if (data.message.length > 2000) {
+      errors.push("Message is too long (max 2000 characters)");
+    }
+
+    // Spam detection
+    if (detectSpam(data.message) || detectSpam(data.name)) {
+      errors.push("Your message appears to contain inappropriate content");
+    }
+
+    // Check for suspicious patterns
+    if (data.name.includes("http") || data.email.includes("..")) {
+      errors.push("Invalid input detected");
+    }
+
+    return errors;
+  };
+
+  const checkRateLimit = () => {
+    const now = Date.now();
+    const timeSinceLastSubmission = now - lastSubmissionTime;
+    const minInterval = 30000; // 30 seconds between submissions
+
+    return timeSinceLastSubmission >= minInterval;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +136,28 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Rate limiting check
+    if (!checkRateLimit()) {
+      toast({
+        title: "⏰ Please Wait",
+        description: "Please wait 30 seconds before sending another message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Input validation
+    const validationErrors = validateInput(formData);
+    if (validationErrors.length > 0) {
+      toast({
+        title: "❌ Validation Error",
+        description: validationErrors[0],
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Basic required field check
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "❌ Missing Information",
@@ -39,18 +169,30 @@ const ContactPage = () => {
     }
 
     setIsSubmitting(true);
+    setLastSubmissionTime(Date.now());
 
     try {
+      // Additional security: sanitize input data
+      const sanitizedData = {
+        name: formData.name.trim().substring(0, 100),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim().substring(0, 20),
+        service: formData.service.trim(),
+        message: formData.message.trim().substring(0, 2000),
+      };
+
       // Prepare email data for EmailJS template
       const templateParams = {
         to_name: "Yohi Hair Braiding Team",
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone || "Not provided",
-        service: formData.service || "General inquiry",
-        message: formData.message,
+        from_name: sanitizedData.name,
+        from_email: sanitizedData.email,
+        phone: sanitizedData.phone || "Not provided",
+        service: sanitizedData.service || "General inquiry",
+        message: sanitizedData.message,
         to_email:
           import.meta.env.VITE_BUSINESS_EMAIL || "contact@yohihairbraiding.com",
+        timestamp: new Date().toLocaleString(),
+        user_agent: navigator.userAgent.substring(0, 200), // For security tracking
       };
 
       // Send email using EmailJS

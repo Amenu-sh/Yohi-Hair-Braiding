@@ -375,7 +375,7 @@ const HomePage = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg"
+                    className="border-white text-pink-600 hover:bg-white/10 px-8 py-3 text-lg"
                   >
                     Contact Us
                   </Button>

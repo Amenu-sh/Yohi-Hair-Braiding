@@ -24,6 +24,74 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
+
+  // Security validation functions
+  const detectSpam = (text) => {
+    const spamKeywords = [
+      "casino",
+      "lottery",
+      "winner",
+      "congratulations",
+      "click here",
+      "free money",
+      "make money",
+      "work from home",
+      "viagra",
+      "crypto",
+      "bitcoin",
+      "investment",
+      "loan",
+      "credit",
+      "debt",
+      "insurance",
+      "seo",
+      "marketing",
+      "promotion",
+      "offer expires",
+      "limited time",
+      "act now",
+      "urgent",
+      "immediate",
+      "guarantee",
+      "risk free",
+    ];
+
+    const lowerText = text.toLowerCase();
+    const spamCount = spamKeywords.filter((keyword) =>
+      lowerText.includes(keyword)
+    ).length;
+    const linkCount = (text.match(/https?:\/\//g) || []).length;
+    const capsRatio = (text.match(/[A-Z]/g) || []).length / text.length;
+
+    return spamCount >= 2 || linkCount >= 2 || capsRatio > 0.5;
+  };
+
+  const checkRateLimit = () => {
+    const now = Date.now();
+    const timeSinceLastSubmission = now - lastSubmissionTime;
+    const minInterval = 60000; // 1 minute between booking submissions
+
+    return timeSinceLastSubmission >= minInterval;
+  };
+
+  const sanitizeInput = (data) => {
+    return {
+      firstName: data.firstName.trim().substring(0, 50),
+      lastName: data.lastName.trim().substring(0, 50),
+      email: data.email.trim().toLowerCase(),
+      phone: data.phone.trim().replace(/[^\d\+\-\(\)\s]/g, ""),
+      service: data.service,
+      date: data.date,
+      time: data.time,
+      hairLength: data.hairLength,
+      hairTexture: data.hairTexture,
+      specialRequests: data.specialRequests.trim().substring(0, 500),
+      address: data.address.trim().substring(0, 200),
+      city: data.city.trim().substring(0, 100),
+      zipCode: data.zipCode.trim().substring(0, 10),
+    };
+  };
 
   const services = [
     {
@@ -111,6 +179,14 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
     if (!formData.hairTexture)
       newErrors.hairTexture = "Please select hair texture";
 
+    // Length validation
+    if (formData.firstName.length > 50)
+      newErrors.firstName = "First name too long";
+    if (formData.lastName.length > 50)
+      newErrors.lastName = "Last name too long";
+    if (formData.specialRequests.length > 500)
+      newErrors.specialRequests = "Special requests too long";
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.email && !emailRegex.test(formData.email)) {
@@ -136,6 +212,30 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
       }
     }
 
+    // Spam detection
+    if (
+      detectSpam(
+        formData.firstName +
+          " " +
+          formData.lastName +
+          " " +
+          formData.specialRequests
+      )
+    ) {
+      newErrors.general =
+        "Invalid input detected. Please use appropriate language.";
+    }
+
+    // Check for suspicious patterns
+    if (
+      formData.firstName.includes("http") ||
+      formData.lastName.includes("http") ||
+      formData.email.includes("..") ||
+      formData.specialRequests.includes("http")
+    ) {
+      newErrors.general = "Suspicious input detected";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -143,45 +243,79 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    // Rate limiting check
+    if (!checkRateLimit()) {
       toast({
-        title: "❌ Validation Error",
-        description: "Please fill in all required fields correctly.",
+        title: "⏰ Please Wait",
+        description: "Please wait 1 minute before submitting another booking.",
         variant: "destructive",
       });
       return;
     }
 
-    // Check if time slot is available
-    if (!bookingManager.isTimeSlotAvailable(formData.date, formData.time)) {
+    if (!validateForm()) {
       toast({
-        title: "❌ Time Slot Unavailable",
+        title: "❌ Validation Error",
         description:
-          "This time slot is already booked. Please select a different time.",
+          errors.general || "Please fill in all required fields correctly.",
         variant: "destructive",
       });
-      setErrors({ time: "This time slot is already booked" });
       return;
     }
 
     setIsSubmitting(true);
+    setLastSubmissionTime(Date.now());
 
     try {
-      // Create the booking
-      const booking = bookingManager.createBooking({
-        ...formData,
-        customerName: `${formData.firstName} ${formData.lastName}`,
-      });
+      // Sanitize input data
+      const sanitizedData = sanitizeInput(formData);
 
-      // Send confirmation email (simulation)
-      await bookingManager.sendConfirmationEmail(booking);
+      // Check if time slot is still available
+      if (
+        !bookingManager.isTimeSlotAvailable(
+          sanitizedData.date,
+          sanitizedData.time
+        )
+      ) {
+        toast({
+          title: "❌ Time Slot Unavailable",
+          description:
+            "This time slot has been taken. Please select another time.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Create booking with sanitized data
+      const bookingData = {
+        customerName: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone,
+        service: sanitizedData.service,
+        date: sanitizedData.date,
+        time: sanitizedData.time,
+        hairLength: sanitizedData.hairLength,
+        hairTexture: sanitizedData.hairTexture,
+        specialRequests: sanitizedData.specialRequests,
+        address: sanitizedData.address,
+        city: sanitizedData.city,
+        zipCode: sanitizedData.zipCode,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent.substring(0, 200), // For security tracking
+      };
+
+      const newBooking = bookingManager.createBooking(bookingData);
+
+      // Send email notification
+      await bookingManager.sendBusinessNotification(newBooking);
 
       toast({
-        title: "🎉 Booking Confirmed!",
-        description: `Your appointment (ID: ${booking.id}) for ${formData.service} has been scheduled for ${formData.date} at ${formData.time}. We'll send you a confirmation email and contact you within 24 hours to confirm your appointment.`,
+        title: "✅ Booking Confirmed!",
+        description: `Your appointment for ${bookingData.service} on ${bookingData.date} at ${bookingData.time} has been confirmed. Booking ID: ${newBooking.id}`,
       });
 
-      // Reset form and close modal
+      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -197,13 +331,17 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
         city: "",
         zipCode: "",
       });
-      onClose();
+
+      // Close modal after a short delay
+      setTimeout(() => {
+        onClose();
+      }, 2000);
     } catch (error) {
-      console.error("Booking error:", error);
+      console.error("Booking submission error:", error);
       toast({
         title: "❌ Booking Failed",
         description:
-          "Something went wrong. Please try again or call us directly.",
+          "There was an error processing your booking. Please try again or call us directly.",
         variant: "destructive",
       });
     } finally {
@@ -211,6 +349,11 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
     }
   };
 
+  // Get available time slots for selected date
+  const getAvailableTimeSlots = () => {
+    if (!formData.date) return [];
+    return bookingManager.getAvailableTimeSlots(formData.date);
+  };
   const getMinDate = () => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -540,6 +683,13 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
 
           {/* Submit Button */}
           <div className="pt-6 border-t">
+            {/* General Error Display */}
+            {errors.general && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-700">⚠️ {errors.general}</p>
+              </div>
+            )}
+
             <div className="mb-4 p-3 bg-pink-50 rounded-lg">
               <p className="text-sm text-gray-700">
                 <strong>📧 What happens next:</strong> Your booking request will
