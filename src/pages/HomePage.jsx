@@ -19,7 +19,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/hair-styling1.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$120-180",
+      price: "$160+",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/cornrows.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$80-120",
+      price: "$60+",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/fulani-1:2-1:2.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$60-90",
+      price: "$160+",
     },
     {
       id: 4,
@@ -47,11 +47,11 @@ const HomePage = () => {
     },
     {
       id: 5,
-      name: "Knotless box braids",
+      name: "Knotless braids",
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/knotles-braids.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$90-150",
+      price: "$160+",
     },
     {
       id: 6,

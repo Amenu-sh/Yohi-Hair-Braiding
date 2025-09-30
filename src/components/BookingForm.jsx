@@ -96,13 +96,13 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
   const services = [
     {
       value: "box-braids",
-      label: "Box Braids ($120-180)",
+      label: "Box Braids ($160+)",
       duration: "4-6 hours",
     },
-    { value: "cornrows", label: "Cornrows ($80-120)", duration: "2-4 hours" },
+    { value: "cornrows", label: "Cornrows ($160+)", duration: "2-4 hours" },
     {
       value: "fulani-braids",
-      label: "Fulani Braids ($60-90)",
+      label: "Fulani Braids ($160+)",
       duration: "1-2 hours",
     },
     {
@@ -122,7 +122,7 @@ const BookingForm = ({ isOpen, onClose, selectedService = null }) => {
     },
     {
       value: "knotless-braids",
-      label: "Knotless Braids ($150-220)",
+      label: "Knotless Braids ($160+)",
       duration: "5-7 hours",
     },
     {

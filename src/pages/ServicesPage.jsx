@@ -17,7 +17,7 @@ const ServicesPage = () => {
       description:
         "Classic protective style perfect for all occasions. Available in various lengths and thicknesses.",
       duration: "4-6 hours",
-      price: "$120-180",
+      price: "$160+",
       image: "/images/gallery/hair-styling1.jpg",
       features: [
         "Protective styling",
@@ -32,7 +32,7 @@ const ServicesPage = () => {
       description:
         "Intricate braided patterns close to the scalp. Custom designs available.",
       duration: "2-4 hours",
-      price: "$80-120",
+      price: "$60+",
       image: "/images/gallery/cornrows.jpg",
       features: [
         "Scalp-friendly",
@@ -47,7 +47,7 @@ const ServicesPage = () => {
       description:
         "Elegant braiding technique suitable for formal and casual occasions.",
       duration: "1-2 hours",
-      price: "$60-90",
+      price: "$160+",
       image: "/images/gallery/fulani-1:2-1:2.jpg",
       features: [
         "Classic elegance",
@@ -106,7 +106,7 @@ const ServicesPage = () => {
       description:
         "Modern braiding technique that reduces tension and provides a more natural look.",
       duration: "5-7 hours",
-      price: "$150-220",
+      price: "$160+",
       image: "/images/gallery/knotles-braids.jpg",
       features: [
         "Reduced tension",
@@ -121,7 +121,7 @@ const ServicesPage = () => {
       description:
         "Traditional African braiding style with decorative beads and accessories.",
       duration: "4-6 hours",
-      price: "$130-170",
+      price: "$160+",
       image: "/images/gallery/fulani-1:2-1:2.jpg",
       features: [
         "Cultural heritage",

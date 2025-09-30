@@ -101,6 +101,13 @@ const GalleryPage = () => {
       description: "Natural-looking feed-in cornrows",
       image: "/images/gallery/hair-styling3.jpg",
     },
+    {
+      id: 13,
+      category: "Kids braids",
+      title: "Feed-in Cornrows",
+      description: "Natural-looking feed-in cornrows",
+      image: "/images/gallery/kids-braids.jpg",
+    },
   ];
 
   const filteredItems =
