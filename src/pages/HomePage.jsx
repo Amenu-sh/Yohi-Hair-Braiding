@@ -15,19 +15,19 @@ const HomePage = () => {
   const services = [
     {
       id: 1,
-      name: "Box Braids",
+      name: "Cornrows",
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/hair-styling1.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$160+",
+      price: "$60+",
     },
     {
       id: 2,
-      name: "Cornrows",
-      description: "More detailed and brief description is coming soon!",
+      name: "Cornrows-thin",
+      description: "thin braids with designs",
       image: "/images/gallery/cornrows.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$60+",
+      price: "$120+",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/fulani-1:2-1:2.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$160+",
+      price: "$200+",
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/Twists.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$70-110",
+      price: "$80+",
     },
     {
       id: 5,
@@ -51,7 +51,7 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/knotles-braids.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$160+",
+      price: "$200+",
     },
     {
       id: 6,
@@ -59,15 +59,15 @@ const HomePage = () => {
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/Godes-Boho-knotles.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$100-140",
+      price: "$200+",
     },
     {
       id: 7,
-      name: "Senegalese twists",
+      name: "Fulani braids with crochet",
       description: "More detailed and brief description is coming soon!",
       image: "/images/gallery/hair-styling3.jpg",
       video: "/videos/hair-styling.mp4",
-      price: "$100-140",
+      price: "$160+",
     },
   ];
 

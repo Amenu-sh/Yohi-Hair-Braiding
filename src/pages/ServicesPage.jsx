@@ -13,11 +13,11 @@ const ServicesPage = () => {
   const services = [
     {
       id: 1,
-      name: "Box Braids",
+      name: "Cornrows",
       description:
         "Classic protective style perfect for all occasions. Available in various lengths and thicknesses.",
       duration: "4-6 hours",
-      price: "$160+",
+      price: "$80+",
       image: "/images/gallery/hair-styling1.jpg",
       features: [
         "Protective styling",
@@ -28,11 +28,11 @@ const ServicesPage = () => {
     },
     {
       id: 2,
-      name: "Cornrows",
+      name: "Cornrows-thin",
       description:
         "Intricate braided patterns close to the scalp. Custom designs available.",
       duration: "2-4 hours",
-      price: "$60+",
+      price: "$120+",
       image: "/images/gallery/cornrows.jpg",
       features: [
         "Scalp-friendly",
@@ -47,7 +47,7 @@ const ServicesPage = () => {
       description:
         "Elegant braiding technique suitable for formal and casual occasions.",
       duration: "1-2 hours",
-      price: "$160+",
+      price: "$200+",
       image: "/images/gallery/fulani-1:2-1:2.jpg",
       features: [
         "Classic elegance",
@@ -62,7 +62,7 @@ const ServicesPage = () => {
       description:
         "Natural texture enhancement with two-strand twists and Senegalese twists.",
       duration: "3-5 hours",
-      price: "$70-110",
+      price: "$80+",
       image: "/images/gallery/Twists.jpg",
       features: [
         "Natural enhancement",
@@ -76,7 +76,7 @@ const ServicesPage = () => {
       name: "Goddess Braids",
       description: "Thick, chunky braids that make a bold fashion statement.",
       duration: "3-4 hours",
-      price: "$100-140",
+      price: "$200+",
       image: "/images/gallery/Godes-Boho-knotles.jpg",
       features: [
         "Bold statement",
@@ -87,11 +87,11 @@ const ServicesPage = () => {
     },
     {
       id: 6,
-      name: "Senegalese twists",
+      name: "Fulani braids with crochet",
       description:
         "Various protective styling options to maintain hair health while looking fabulous.",
       duration: "2-5 hours",
-      price: "$90-150",
+      price: "$160+",
       image: "/images/gallery/hair-styling3.jpg",
       features: [
         "Hair protection",
@@ -106,7 +106,7 @@ const ServicesPage = () => {
       description:
         "Modern braiding technique that reduces tension and provides a more natural look.",
       duration: "5-7 hours",
-      price: "$160+",
+      price: "$200+",
       image: "/images/gallery/knotles-braids.jpg",
       features: [
         "Reduced tension",

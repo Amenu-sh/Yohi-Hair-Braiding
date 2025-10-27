@@ -35,12 +35,22 @@ const Footer = () => {
               services. Where beauty meets artistry.
             </p>
             <div className="flex space-x-4">
-              <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+              <a
+                href="https://www.instagram.com/yohi.hairbraiding?igsh=c2Ywam9yYmxmMHlm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer"
+              >
                 <Instagram className="h-4 w-4" />
-              </div>
-              <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+              </a>
+              <a
+                href="https://www.instagram.com/yohi.hairbraiding?igsh=c2Ywam9yYmxmMHlm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer"
+              >
                 <Facebook className="h-4 w-4" />
-              </div>
+              </a>
               <div className="bg-pink-600 p-2 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
                 <Twitter className="h-4 w-4" />
               </div>
